@@ -1,0 +1,17 @@
+Make sure to leave the passphrase blank (-N "")
+  ssh-keygen -t rsa -f /opt/letsencrypt-routeros/id_rsa -N ""
+
+Send Generated DSA Key to RouterOS / Mikrotik
+  source /opt/letsencrypt-routeros/letsencrypt-routeros.settings
+  scp -P $ROUTEROS_SSH_PORT /opt/letsencrypt-routeros/id_rsa.pub "$ROUTEROS_USER"@"$ROUTEROS_HOST":"id_rsa.pub" 
+  
+Setup RouterOS / Mikrotik side
+Check that user is the same as in the settings file letsencrypt-routeros.settings
+Check Mikrotik ssh port in /ip services ssh
+Check Mikrotik firewall to accept on SSH port
+
+:put "Enable SSH"
+  /ip service enable ssh
+
+:put "Add to the user RSA Public Key"
+  /user ssh-keys import user=admin public-key-file=id_rsa.pub
