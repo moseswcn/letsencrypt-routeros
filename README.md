@@ -67,7 +67,7 @@ scp -P $ROUTEROS_SSH_PORT /opt/letsencrypt-routeros/id_rsa.pub "$ROUTEROS_USER"@
 :put "Enable SSH"
 /ip service enable ssh
 
-:put "Add to the user DSA Public Key"
+:put "Add to the user RSA Public Key"
 /user ssh-keys import user=admin public-key-file=id_rsa.pub
 ```
 
