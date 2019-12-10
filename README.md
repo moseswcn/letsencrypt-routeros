@@ -9,7 +9,7 @@
 ### How it works:
 * Dedicated Linux renew and push certificates to RouterOS / Mikrotik
 * After CertBot renew your certificates
-* The script connects to RouterOS / Mikrotik using DSA Key (without password or user input)
+* The script connects to RouterOS / Mikrotik using RSA Key (without password or user input)
 * Delete previous certificate files
 * Delete the previous certificate
 * Upload two new files: **Certificate** and **Key**
